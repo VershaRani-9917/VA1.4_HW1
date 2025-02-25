@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .input-container {
+            margin: 10px 0;
+        }
+        .input-container input {
+            margin-right: 10px;
+        }
+        .button-container {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <label for="ageInput">Enter your age:</label>
+        <input type="number" id="ageInput" />
+        <div class="button-container">
+            <button id="showAgeBtn">Display Age</button>
+            <button id="styleBtn1">Check Eligibility</button>
+        </div>
+    </div>
+    <p id="nameResult1"></p>
+
+    <div class="input-container">
+        <label for="studentInput">Are you a student?</label>
+        <input type="text" id="studentInput" />
+        <div class="button-container">
+            <button id="showStudentBtn">Display Answer</button>
+            <button id="styleBtn2">Check Eligibility</button>
+        </div>
+    </div>
+    <p id="nameResult2"></p>
+
+    <div class="input-container">
+        <label for="passwordInput">Enter password:</label>
+        <input type="password" id="passwordInput" />
+        <div class="button-container">
+            <button id="showPasswordBtn">Display Password</button>
+            <button id="styleBtn3">Check Password</button>
+        </div>
+    </div>
+    <p id="nameResult3"></p>
+
+    <script>
+        const ageInput = document.querySelector("#ageInput");
+        const showAgeBtn = document.querySelector("#showAgeBtn");
+        const nameResult1 = document.querySelector("#nameResult1");
+        const styleBtn1 = document.querySelector("#styleBtn1");
+
+        showAgeBtn.addEventListener("click", function() {
+            const ageValue = ageInput.value;
+            nameResult1.textContent = `Your Age: ${ageValue}`;
+        });
+
+        styleBtn1.addEventListener("click", function() {
+            const ageValue = ageInput.value;
+            if (ageValue > 18) {
+                nameResult1.style.color = "green";
+            } else {
+                nameResult1.style.color = "red";
+            }
+        });
+
+        const studentInput = document.querySelector("#studentInput");
+        const showStudentBtn = document.querySelector("#showStudentBtn");
+        const nameResult2 = document.querySelector("#nameResult2");
+        const styleBtn2 = document.querySelector("#styleBtn2");
+
+        showStudentBtn.addEventListener("click", function() {
+            const studentValue = studentInput.value;
+            nameResult2.textContent = `Your Answer: ${studentValue}`;
+        });
+
+        styleBtn2.addEventListener("click", function() {
+            const studentValue = studentInput.value;
+            if (studentValue.toLowerCase() === "yes") {
+                nameResult2.textContent = `You are eligible.`;
+                nameResult2.style.color = "green";
+            } else {
+                nameResult2.textContent = `You are not eligible.`;
+                nameResult2.style.color = "red";
+            }
+        });
+
+        const passwordInput = document.querySelector("#passwordInput");
+        const showPasswordBtn = document.querySelector("#showPasswordBtn");
+        const nameResult3 = document.querySelector("#nameResult3");
+        const styleBtn3 = document.querySelector("#styleBtn3");
+
+        showPasswordBtn.addEventListener("click", function() {
+            const passwordValue = passwordInput.value;
+            nameResult3.textContent = `Your Password: ${passwordValue}`;
+        });
+ 
+        styleBtn3.addEventListener("click", function() {
+            const passwordValue = passwordInput.value;
+            const isValidPassword = passwordValue.length >= 8 && /\d/.test(passwordValue);
+            if (isValidPassword) {
+                nameResult3.textContent = 'Password Accepted.';
+                nameResult3.style.color = 'green';
+            } else {
+                nameResult3.textContent = 'Invalid Password. Password must contain at least 8 characters and a number.';
+                nameResult3.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
